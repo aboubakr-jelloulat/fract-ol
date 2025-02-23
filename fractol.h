@@ -6,11 +6,11 @@
 /*   By: ajelloul <ajelloul@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/22 10:44:55 by ajelloul          #+#    #+#             */
-/*   Updated: 2025/02/22 12:51:20 by ajelloul         ###   ########.fr       */
+/*   Updated: 2025/02/23 09:53:44 by ajelloul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-# ifndef FRACTOL_H
+#ifndef FRACTOL_H
 # define FRACTOL_H
 
 # include <mlx.h>
@@ -22,12 +22,12 @@
 
 typedef struct s_data
 {
-    void    *img_ptr;
-    char    *pixels_addr;
-    int     bits_per_pixel;
-    int     line_length;
-    int     endian;
-}   t_data;
+	void	*img_ptr;
+	char	*pixels_addr;
+	int		bits_per_pixel;
+	int		line_length;
+	int		endian;
+}	t_data;
 
 typedef struct s_math
 {
@@ -38,29 +38,26 @@ typedef struct s_math
 	double	re_x_re;
 	double	im_x_im;
 	int		iteration;
-	
-} t_math;
+}	t_math;
 
 typedef struct s_fractol
 {
-	t_data  img;
+	t_data	img;
 	t_math	math;
-    void    *mlx;
-    void    *mlx_win;
-    double  zoom;
-    double  ox;
-    double  oy;
-    int     max_iteration;
-    int     color;
-    int    is_julia;
-}   t_fractol;
+	void	*mlx;
+	void	*mlx_win;
+	double	zoom;
+	double	ox;
+	double	oy;
+	int		max_iteration;
+	int		color;
+	int		is_julia;
+}	t_fractol;
 
-
-
-int	ft_strcmp(char *s1, char *s2);
-int key_hook(int keycode, void *param);
-int	x_close(t_fractol *fractol);
-
-void    display_usage(void);
+int		ft_strcmp(char *s1, char *s2);
+int		key_hook(int keycode, void *param);
+int		x_close(t_fractol *fractol);
+double	ft_atof(const char *str, double res, int sign, double div);
+void	display_usage(void);
 
 #endif
