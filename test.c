@@ -1,5 +1,6 @@
 #include <mlx.h>
 #include <stdio.h>
+#include <stdlib.h>
 
 // int	main(void)
 // {
@@ -60,92 +61,151 @@
 
 /*  Best practice   */
 
-// typedef	struct s_data
-// {
-// 	void	*img;
-// 	char	*addr;
-// 	int 	bits_per_pixel;
-// 	int		line_length;
-// 	int 	endian;
-	
-// }	t_data;
-
-// void my_mlx_pixel_put(t_data *data, int x, int y, int color)
-// {
-// 	char *dst;
-
-// 	dst = data->addr + (y * data->line_length + x * (data->bits_per_pixel / 8));
-// 	*(unsigned int *)dst = color;
-// }
-
-// void draw_square(t_data	*img, int x_start, int y_start, int size, int color1, int color2)
-// {
-
-// 	for (int y = y_start; y < y_start + size; y++)
-// 	{
-// 		for (int x = x_start; x < x_start + size; x++)
-// 		{
-// 			if (x < size / 2)
-// 				my_mlx_pixel_put(img, x, y, color1);
-// 			else
-// 				my_mlx_pixel_put(img, x, y, color2);
-// 		}
-// 	}
-
-// }
-
-
-// int main(void)
-// {
-// 	void *mlx;
-// 	void *mlx_win;
-// 	t_data	img;
-
-// 	mlx = mlx_init();
-// 	mlx_win = mlx_new_window(mlx,800, 800, "Practice in MiniLibX");
-// 	img.img = mlx_new_image(mlx, 800, 800);
-// 	img.addr = mlx_get_data_addr(img.img, &img.bits_per_pixel, &img.line_length, &img.endian);
-
-
-// 	draw_square(&img, 0, 0, 300, 0x00FF0000,  0x00FF00);
-
-// 	mlx_put_image_to_window(mlx, mlx_win, img.img, 0, 0);
-// 	mlx_loop(mlx);
-
-// 	return (0);
-// }
-
-
-double	ft_atof(const char *str, double res, int sign, double div)
+typedef	struct s_data
 {
-	if (*str == '-' || *str == '+')
+	void	*img;
+	char	*addr;
+	int 	bits_per_pixel;
+	int		line_length;
+	int 	endian;
+	
+}	t_data;
+
+void my_mlx_pixel_put(t_data *data, int x, int y, int color)
+{
+	char *dst;
+
+	dst = data->addr + (y * data->line_length + x * (data->bits_per_pixel / 8));
+	*(unsigned int *)dst = color;
+}
+
+int eshap(int keycode)
+{
+	if (keycode == 53 || keycode == 12)
+		exit(0);
+	return (0);
+}
+int	x_close(void *param)
+{
+	(void)param;
+	exit(0); // Properly exit the program
+	return (0);
+}
+
+void draw_all_windo(t_data *img, int color)
+{
+	for (int i = 0; i < 800; i++)
 	{
-		if (*str == '-')
-			sign = -1;
-		str++;
-	}
-	while (*str && *str != '.' && *str >= '0' && *str <= '9')
-	{
-		res = res * 10 + (*str - '0');
-		str++;
-	}
-	if (*str == '.')
-	{
-		str++;
-		while (*str && *str >= '0' && *str <= '9')
+		for (int j = 0; j < 800; j++)
 		{
-			div *= 10;
-			res = res + (*str - '0') / div;
-			str++;
+			my_mlx_pixel_put(img, i, j, color);
 		}
 	}
-	return (res * sign);
+}
+
+void	draw_line(t_data	*img, int color)
+{
+	for (int i = 0; i < 800; i++) // diragonal 
+	{
+		my_mlx_pixel_put(img, i, i, color);
+	}
+
+	int	x, y, x_start = 0, x_end = 400;
+
+	for (x = x_start; x <= x_end; x++) // mosta9iim
+		my_mlx_pixel_put(img, x, y, color);
+
+
+}
+
+void draw_square(t_data *img, int color1, int color2)
+{
+	for (int x = 100; x < 400; x++)
+		for (int y = 100; y < 400; y++)
+		{
+			if (y < 200)
+				my_mlx_pixel_put(img, x, y, color1);
+			else
+				my_mlx_pixel_put(img, x, y, color2);
+		}
+}
+
+void draw_trinagle(t_data	*img, int color1, int color2)
+{
+	int half = 400;
+	int all = 800;
+	
+	for (int i = 0; i < all; i++)
+	{
+		for(int j = 0; j < half; j++)
+		{
+			my_mlx_pixel_put(img, i, j, color2);
+		}
+		half--;
+	}
+
+	half = 400;
+	all = 800;
+
+	for (int i = all; i >= 0; i--)
+	{
+		for(int j = 0; j < half; j++)
+		{
+			my_mlx_pixel_put(img, i, j, color2);
+		}
+		half--;
+	}
+
+	half = 400;
+	all = 800;
+
+	for (int i = 0; i < all; i++)
+	{
+		for (int j = 400; j < all; j++)
+		{
+			my_mlx_pixel_put(img, i, j, color2);
+		}
+	}
+
+}
+
+void draw_dama(t_data	*img, int color1, int color2)
+{
+	for (int i = 0; i < 800; i++)
+	{
+		my_mlx_pixel_put(img, i, i, color2);
+	}
+
+	int j = 0;
+	for (int i = 800; i > 0; i--)
+	{
+		my_mlx_pixel_put(img, i, j, color2);
+		j++;
+	}
 }
 
 
 int main(void)
 {
+	void *mlx;
+	void *mlx_win;
+	t_data	img;
 
-	printf("%f\n", ft_atof("42.73", 0, 1, 1));
+	mlx = mlx_init();
+	mlx_win = mlx_new_window(mlx,800, 800, "Practice in MiniLibX");
+	img.img = mlx_new_image(mlx, 800, 800);
+	img.addr = mlx_get_data_addr(img.img, &img.bits_per_pixel, &img.line_length, &img.endian);
 
+
+	//draw_all_windo(&img, 0x00FF0000);
+	//draw_line(&img, 0x00FF00);
+	//draw_square(&img, 0x00FF0000,  0x00FF00);
+	draw_trinagle(&img, 0x000000FF, 0x0000FF00);
+
+	mlx_put_image_to_window(mlx, mlx_win, img.img, 0, 0);
+	mlx_key_hook(mlx_win, eshap, &img);
+	mlx_hook(mlx_win, 17, 0, x_close, NULL);
+	mlx_loop(mlx);
+
+	return (0);
 }
