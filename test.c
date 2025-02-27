@@ -197,7 +197,7 @@ int main(void)
 	img.addr = mlx_get_data_addr(img.img, &img.bits_per_pixel, &img.line_length, &img.endian);
 
 
-	//draw_all_windo(&img, 0x00FF0000);
+	draw_all_windo(&img, 0x00FF0000);
 	//draw_line(&img, 0x00FF00);
 	//draw_square(&img, 0x00FF0000,  0x00FF00);
 	draw_trinagle(&img, 0x000000FF, 0x0000FF00);
