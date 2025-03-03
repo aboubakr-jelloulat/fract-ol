@@ -6,7 +6,7 @@
 /*   By: ajelloul <ajelloul@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/02 22:03:29 by ajelloul          #+#    #+#             */
-/*   Updated: 2025/03/02 23:32:30 by ajelloul         ###   ########.fr       */
+/*   Updated: 2025/03/03 23:44:36 by ajelloul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,9 +33,6 @@ static void	init_complex_coordinates(t_fractol *fractol, int x, int y)
 }
 static void	apply_fractal_formula(t_fractol *fractol)
 {
-	while (fractol->math.iteration < fractol->max_iteration)
-	{
-		
-	}
+	
 	
 }
