@@ -6,14 +6,14 @@
 /*   By: ajelloul <ajelloul@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/22 10:44:55 by ajelloul          #+#    #+#             */
-/*   Updated: 2025/02/23 09:53:44 by ajelloul         ###   ########.fr       */
+/*   Updated: 2025/03/05 23:24:45 by ajelloul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef FRACTOL_H
 # define FRACTOL_H
 
-# include <mlx.h>
+# include "mlx.h"
 # include <unistd.h>
 # include <stdlib.h>
 
@@ -59,5 +59,8 @@ int		key_hook(int keycode, void *param);
 int		x_close(t_fractol *fractol);
 double	ft_atof(const char *str, double res, int sign, double div);
 void	display_usage(void);
+void	ft_draw(t_fractol fractol);
+int 	mouse_hook(int button, int x, int y, void *param);
+double	to_complex_plane(int pixel_pos, double min, double max);
 
 #endif
