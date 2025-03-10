@@ -6,7 +6,7 @@
 /*   By: ajelloul <ajelloul@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/22 10:44:55 by ajelloul          #+#    #+#             */
-/*   Updated: 2025/03/10 11:23:56 by ajelloul         ###   ########.fr       */
+/*   Updated: 2025/03/10 12:33:18 by ajelloul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,6 +56,7 @@ typedef struct s_fractol
 
 int	ft_strncmp(const char *s1, const char *s2, size_t n);
 int	ft_strcmp(char *s1, char *s2);
+int	ft_atoi(char *num);
 int		key_hook(int keycode, void *param);
 int		x_close(t_fractol *fractol);
 double	ft_atof(const char *str, double res, int sign, double div);

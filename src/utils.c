@@ -6,7 +6,7 @@
 /*   By: ajelloul <ajelloul@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/22 11:16:22 by ajelloul          #+#    #+#             */
-/*   Updated: 2025/03/10 11:23:35 by ajelloul         ###   ########.fr       */
+/*   Updated: 2025/03/10 12:33:09 by ajelloul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,4 +86,15 @@ double	ft_atof(const char *str, double res, int sign, double div)
 		}
 	}
 	return (res * sign);
+}
+int	ft_atoi(char *num)
+{
+	int	nbr;
+	int	index;
+
+	index = -1;
+	nbr = 0;
+	while (num[++index])
+		nbr = nbr * 10 + (num[index] - '0');
+	return (nbr);
 }
