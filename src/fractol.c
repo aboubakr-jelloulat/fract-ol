@@ -6,7 +6,7 @@
 /*   By: ajelloul <ajelloul@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/22 10:44:45 by ajelloul          #+#    #+#             */
-/*   Updated: 2025/03/10 11:31:38 by ajelloul         ###   ########.fr       */
+/*   Updated: 2025/03/10 11:34:11 by ajelloul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,7 +52,9 @@ int	main(int ac, char **av)
 
 	if (ac == 2)
 	{
-		if (ft_strcmp(av[1], "Mandelbrot") == 0)
+		if (ft_strcmp(av[1], "Mandelbrot") == 0
+			|| ft_strcmp(av[1], "julia") == 0)
+
 		{
 			fractol_init(&fractol, av[1]);
 			ft_draw(fractol);
