@@ -6,11 +6,12 @@
 /*   By: ajelloul <ajelloul@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/02 22:03:29 by ajelloul          #+#    #+#             */
-/*   Updated: 2025/03/05 23:20:30 by ajelloul         ###   ########.fr       */
+/*   Updated: 2025/03/10 11:10:33 by ajelloul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../fractol.h"
+#include <stdio.h>
 
 double	to_complex_plane(int pixel_pos, double min, double max)
 {
