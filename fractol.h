@@ -6,7 +6,7 @@
 /*   By: ajelloul <ajelloul@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/22 10:44:55 by ajelloul          #+#    #+#             */
-/*   Updated: 2025/03/10 12:33:18 by ajelloul         ###   ########.fr       */
+/*   Updated: 2025/03/11 21:59:16 by ajelloul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,9 +52,9 @@ typedef struct s_fractol
 	int		max_iteration;
 	int		color;
 	int		is_julia;
+	int     flag_set;
 }	t_fractol;
 
-int	ft_strncmp(const char *s1, const char *s2, size_t n);
 int	ft_strcmp(char *s1, char *s2);
 int	ft_atoi(char *num);
 int		key_hook(int keycode, void *param);
@@ -64,5 +64,6 @@ void	display_usage(void);
 void	ft_draw(t_fractol fractol);
 int 	mouse_hook(int button, int x, int y, void *param);
 double	to_complex_plane(int pixel_pos, double min, double max);
+void 	free_fractol(t_fractol *fractol);
 
 #endif
