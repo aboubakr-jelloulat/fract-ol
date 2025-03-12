@@ -6,43 +6,11 @@
 /*   By: ajelloul <ajelloul@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/22 11:16:22 by ajelloul          #+#    #+#             */
-/*   Updated: 2025/03/10 12:33:09 by ajelloul         ###   ########.fr       */
+/*   Updated: 2025/03/12 03:53:10 by ajelloul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../fractol.h"
-
-int	ft_strcmp(char *s1, char *s2)
-{
-	size_t	i;
-
-	i = 0;
-	if (!s1)
-		return (1);
-	while (s1[i] || s2[i])
-	{
-		if (s1[i] != s2[i])
-			return (s1[i] - s2[i]);
-		i++;
-	}
-	return (0);
-}
-
-int	ft_strncmp(const char *s1, const char *s2, size_t n)
-{
-	size_t	i;
-
-	i = 0;
-	while ((s1[i] || s2[i]) && i < n)
-	{
-		if (s1[i] != s2[i])
-		{
-			return ((unsigned char)s1[i] - (unsigned char)s2[i]);
-		}
-		i++;
-	}
-	return (0);
-}
 
 void	display_usage(void)
 {
@@ -51,10 +19,10 @@ void	display_usage(void)
 	write(1, "====================================\n", 37);
 	write(1, "\n", 1);
 	write(1, "Usage 1: Mandelbrot Set\n", 25);
-	write(1, "  ./fractol Mandelbrot\n", 24);
+	write(1, "  ./fractol [1]\n", 24);
 	write(1, "\n", 1);
 	write(1, "Usage 2: Julia Set\n", 20);
-	write(1, "  ./fractol julia <x> <y>\n", 27);
+	write(1, "  ./fractol [2] <x> <y>\n", 27);
 	write(1, "\n", 1);
 	write(1, "Exit:\n", 6);
 	write(1, "  Close the window (x) or press ESC.\n", 37);
@@ -87,14 +55,43 @@ double	ft_atof(const char *str, double res, int sign, double div)
 	}
 	return (res * sign);
 }
-int	ft_atoi(char *num)
-{
-	int	nbr;
-	int	index;
 
-	index = -1;
-	nbr = 0;
-	while (num[++index])
-		nbr = nbr * 10 + (num[index] - '0');
-	return (nbr);
+int	ft_atoi(const char *str)
+{
+	int		sign;
+	long	result;
+
+	sign = 1;
+	result = 0;
+	while ((*str >= 9 && *str <= 13) || *str == 32)
+		str++;
+	if (*str == '+' || *str == '-')
+	{
+		if (*str == '-')
+			sign *= -1;
+		str++;
+	}
+	while (*str >= '0' && *str <= '9')
+	{
+		if (result > (9223372036854775807 - (*str - '0')) / 10)
+		{
+			if (sign == -1)
+				return (0);
+			else
+				return (-1);
+		}
+		result = (result * 10) + (*str++ - '0');
+	}
+	return (result * sign);
+}
+
+void	free_fractol(t_fractol *fractol)
+{
+	if (fractol->img.img_ptr)
+		mlx_destroy_image(fractol->mlx, fractol->img.img_ptr);
+	if (fractol->mlx_win)
+		mlx_destroy_window(fractol->mlx, fractol->mlx_win);
+	if (fractol->mlx)
+		free (fractol->mlx);
+	exit (0);
 }

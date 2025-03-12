@@ -6,12 +6,11 @@
 /*   By: ajelloul <ajelloul@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/02 22:03:29 by ajelloul          #+#    #+#             */
-/*   Updated: 2025/03/10 12:41:00 by ajelloul         ###   ########.fr       */
+/*   Updated: 2025/03/12 03:25:04 by ajelloul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../fractol.h"
-#include <stdio.h>
 
 double	to_complex_plane(int pixel_pos, double min, double max)
 {
@@ -21,29 +20,32 @@ double	to_complex_plane(int pixel_pos, double min, double max)
 	return (res);
 }
 
-static void	init_complex_coordinates(t_fractol *fractol, int x, int y)
+void	init_complex_coordinates(t_fractol *fractol, int x, int y)
 {
-	fractol->math.re = to_complex_plane(x, fractol->ox - fractol->zoom, fractol->ox + fractol->zoom);
-	fractol->math.im = to_complex_plane(y, fractol->oy - fractol->zoom, fractol->oy + fractol->zoom);
+	fractol->math.re = to_complex_plane(x, fractol->ox - fractol->zoom,
+			fractol->ox + fractol->zoom);
+	fractol->math.im = to_complex_plane(y, fractol->oy - fractol->zoom,
+			fractol->oy + fractol->zoom);
 	if (!fractol->is_julia)
 	{
 		fractol->math.default_re = fractol->math.re;
 		fractol->math.default_im = fractol->math.im;
 	}
 }
-static void	apply_fractal_formula(t_fractol *fractol)
+
+void	apply_fractal_formula(t_fractol *fractol)
 {
 	while (fractol->math.iteration < fractol->max_iteration)
 	{
 		fractol->math.im_x_im = 2 * fractol->math.re * fractol->math.im;
-		fractol->math.re_x_re = fractol->math.re * fractol->math.re - fractol->math.im * fractol->math.im;
-		
+		fractol->math.re_x_re = fractol->math.re * fractol->math.re
+			- fractol->math.im * fractol->math.im;
 		fractol->math.re = fractol->math.re_x_re + fractol->math.default_re;
 		fractol->math.im = fractol->math.im_x_im + fractol->math.default_im;
 		fractol->math.iteration++;
-
-		if (fractol->math.re * fractol->math.re + fractol->math.im * fractol->math.im > 4)
-			break;
+		if (fractol->math.re * fractol->math.re + fractol->math.im
+			* fractol->math.im > 4)
+			break ;
 	}
 }
 
@@ -63,10 +65,10 @@ void	ft_draw(t_fractol fractol)
 	int	color;
 
 	y = 0;
-	while (y < HEIGHT) // Loop through rows (height)
+	while (y < HEIGHT)
 	{
 		x = 0;
-		while (x < WIDTH) // Loop through columns (width)
+		while (x < WIDTH)
 		{
 			init_complex_coordinates(&fractol, x, y);
 			fractol.math.iteration = 0;

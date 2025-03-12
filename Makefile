@@ -6,7 +6,9 @@ RESET   =  	\033[0m
 NAME    = 	fractol
 CC      = 	cc
 CFLAG   = 	-Wall -Wextra -Werror
-LDFLAGS = 	-L. -lmlx -framework OpenGL -framework AppKit
+LDFLAGS = 	-L$(MLX_DIR) -lmlx -framework OpenGL -framework AppKit
+
+MLX_DIR = /Users/ajelloul/Desktop/
 
 SRC     = 	src/fractol.c 	src/utils.c 	src/event.c 	src/draw.c
 OBJS    = 	$(SRC:.c=.o)
