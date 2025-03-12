@@ -6,35 +6,12 @@
 /*   By: ajelloul <ajelloul@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/22 11:16:22 by ajelloul          #+#    #+#             */
-<<<<<<< HEAD
 /*   Updated: 2025/03/12 03:53:10 by ajelloul         ###   ########.fr       */
-=======
-/*   Updated: 2025/03/11 22:03:18 by ajelloul         ###   ########.fr       */
->>>>>>> 68d07db58b120ec1d5f08b36495d5f6ce4b65464
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../fractol.h"
 
-<<<<<<< HEAD
-=======
-int	ft_strcmp(char *s1, char *s2)
-{
-	size_t	i;
-
-	i = 0;
-	if (!s1)
-		return (1);
-	while (s1[i] || s2[i])
-	{
-		if (s1[i] != s2[i])
-			return (s1[i] - s2[i]);
-		i++;
-	}
-	return (0);
-}
-
->>>>>>> 68d07db58b120ec1d5f08b36495d5f6ce4b65464
 void	display_usage(void)
 {
 	write(1, "====================================\n", 37);
@@ -52,17 +29,6 @@ void	display_usage(void)
 	write(1, "====================================\n", 37);
 	exit(0);
 }
-
-void	free_fractol(t_fractol *fractol)
-{
-	if (fractol->img.img_ptr)
-		mlx_destroy_image(fractol->mlx, fractol->img.img_ptr);
-	if (fractol->mlx_win)
-		mlx_destroy_window(fractol->mlx, fractol->mlx_win);
-	if (fractol->mlx)
-		free(fractol->mlx);
-}
-
 
 double	ft_atof(const char *str, double res, int sign, double div)
 {
