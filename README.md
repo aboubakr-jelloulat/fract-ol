@@ -53,9 +53,10 @@ Developed as part of the 42 Network curriculum.
 
 ## ❄️ Screenshot
 
-![Fract-ol Screenshot](screenshot1.png)
-![Fract-ol Screenshot](screenshot2.png)
-![Fract-ol Screenshot](screenshot3.png)
+![Fract-ol Screenshot](Screenshot/screenshot1.png)
+![Fract-ol Screenshot](Screenshot/screenshot2.png)
+![Fract-ol Screenshot](Screenshot/screenshot3.png)
+
 
 
 
