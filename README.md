@@ -51,5 +51,13 @@ If no valid parameters are provided, the program will display usage instructions
 ## 🏆 Credits
 Developed as part of the 42 Network curriculum.
 
+## ❄️ Screenshot
+
+![Fract-ol Screenshot](screenshot1.png)
+![Fract-ol Screenshot](screenshot2.png)
+![Fract-ol Screenshot](screenshot3.png)
+
+
+
 📌 **Enjoy exploring the beauty of fractals!** ✨
 
