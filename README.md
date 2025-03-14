@@ -53,8 +53,14 @@ Developed as part of the 42 Network curriculum.
 
 ## ❄️ Screenshot
 
-![Fract-ol Screenshot](Screenshot/screenshot1.png)
+``` Mandelbrot set```
+
+
 ![Fract-ol Screenshot](Screenshot/screenshot2.png)
+
+![Fract-ol Screenshot](Screenshot/screenshot1.png)
+
+``` Julia set ```
 ![Fract-ol Screenshot](Screenshot/screenshot3.png)
 
 
