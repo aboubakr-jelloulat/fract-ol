@@ -8,7 +8,7 @@ CC      = 	cc
 CFLAG   = 	-Wall -Wextra -Werror
 LDFLAGS = 	-L$(MLX_DIR) -lmlx -framework OpenGL -framework AppKit
 
-MLX_DIR = /Users/ajelloul/Desktop/
+MLX_DIR = MLX
 
 SRC     = 	src/fractol.c 	src/utils.c 	src/event.c 	src/draw.c
 OBJS    = 	$(SRC:.c=.o)

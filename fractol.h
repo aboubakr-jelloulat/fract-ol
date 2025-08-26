@@ -6,14 +6,14 @@
 /*   By: ajelloul <ajelloul@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/22 10:44:55 by ajelloul          #+#    #+#             */
-/*   Updated: 2025/03/12 04:12:30 by ajelloul         ###   ########.fr       */
+/*   Updated: 2025/08/26 13:43:59 by ajelloul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef FRACTOL_H
 # define FRACTOL_H
 
-# include "/Users/ajelloul/Desktop/mlx.h"
+# include "mlx.h"
 # include <unistd.h>
 # include <stdlib.h>
 
